@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">MyBattery</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="akkum_vendor">Марка</string>
+    <string name="akkum_capacity">мАч</string>
+    <string name="akkum_discharge_rate">Кол-во С</string>
+    <string name="akkum_status">Статус</string>
+    <string name="akkum_cycles">Кол-во циклов</string>
+    <string name="akkum_comment">Комментарий</string>
+    <string name="akkum_btn_save">Сохранить</string>
+
+    <string name="cells_prompt">Выберите кол-во банок</string>
+    <string-array name="cells_arrays">
+        <item>1S (3.7V)</item>
+        <item>2S (7.4V)</item>
+        <item>3S (11.1V)</item>
+        <item>4S (14.8V)</item>
+        <item>5S (18.5V)</item>
+    </string-array>
+</resources>
