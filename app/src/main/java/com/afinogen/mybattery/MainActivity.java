@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -56,13 +57,34 @@ public class MainActivity extends AppCompatActivity {
                                 ", capacity = " + c.getString(emailColIndex));
                 // переход на следующую строку
                 // а если следующей нет (текущая - последняя), то false - выходим из цикла
-                names.add( "ID = " + c.getInt(idColIndex) +
+                names.add("ID = " + c.getInt(idColIndex) +
                         ", vendor = " + c.getString(nameColIndex) +
                         ", capacity = " + c.getString(emailColIndex));
             } while (c.moveToNext());
 
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
             listBattery.setAdapter(adapter);
+
+            listBattery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView<?> parent, View view,
+                                        int position, long id) {
+                    Log.d(LOG_TAG, "itemClick: position = " + position + ", id = " + id);
+                    Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                    intent.putExtra("idBattery", id + 1);
+                    startActivity(intent);
+                }
+            });
+
+            listBattery.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                public void onItemSelected(AdapterView<?> parent, View view,
+                                           int position, long id) {
+                    Log.d(LOG_TAG, "itemSelect: position = " + position + ", id = " + id);
+                }
+
+                public void onNothingSelected(AdapterView<?> parent) {
+                    Log.d(LOG_TAG, "itemSelect: nothing");
+                }
+            });
         } else
             Log.d(LOG_TAG, "0 rows");
         c.close();
