@@ -150,7 +150,17 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+            // создаем таблицу с полями
+            db.execSQL("create table battery ("
+                    + "id integer primary key autoincrement,"
+                    + "vendor text,"
+                    + "capacity text,"
+                    + "comment text,"
+                    + "count_cells text,"
+                    + "discharge_rate integer,"
+                    + "count_s integer,"
+                    + "cycles integer,"
+                    + "status integer" + ");");
         }
     }
 }
